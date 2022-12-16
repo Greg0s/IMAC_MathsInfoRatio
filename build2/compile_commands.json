@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/emmaveauvy/Documents/2022-2023/IMAC_MathsInfoRatio/build2/INTERFACE",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/emmaveauvy/Documents/2022-2023/IMAC_MathsInfoRatio/libRationnel/include  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.0.sdk -Wall -O2 -std=gnu++11 -o CMakeFiles/IMAC_MathsInfoRatio.dir/src/Ratio.cpp.o -c /Users/emmaveauvy/Documents/2022-2023/IMAC_MathsInfoRatio/libRationnel/src/Ratio.cpp",
+  "file": "/Users/emmaveauvy/Documents/2022-2023/IMAC_MathsInfoRatio/libRationnel/src/Ratio.cpp"
+}
+]
