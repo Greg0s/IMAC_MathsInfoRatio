@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.13)
 
 # give a name to the project
-projectt(testRatio)
+project(testRatio)
 
-# file to compile and name of the executable
-add_executable(testRatio include/Ratio.hpp src/Ratio.cpp)
+# file to compile and name of  executable
+add_executable(testRatio src/main.cpp)
 
 
 

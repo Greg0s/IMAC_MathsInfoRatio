@@ -1,4 +1,4 @@
-#include "libRationnel/include/Ratio.hpp"
+#include "../../libRationnel/include/Ratio.hpp"
 
 int main{
     Ratio ratio;
