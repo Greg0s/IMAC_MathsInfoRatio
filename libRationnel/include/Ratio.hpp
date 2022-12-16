@@ -1,40 +1,39 @@
 #pragma once
 
-#ifndef Ratio
-#define Ratio 
+#ifndef Ratio_H
+#define Ratio_H
 
-//#include <iostream>
+#include <iostream>
 
 template<class T>
 class Ratio{
-private:
-    T num;
-    T denom;
-public:
-    ratio(/* args */);
-    ~ratio();
-
-    Ratio(T num, T denom): m_data(num, denom){
+    private:
+        T num;
+        T denom;
+    public:
+        Ratio(T n = 0, T d = 0): num(n), denom(d){
         
     };
+        ~Ratio();
+    
+        void display() const;
 
-    void display(const Ratio &ratio);
+        // Ratio operator=(const Ratio &ratio);
+        // Ratio operator+(const Ratio &ratio); 
+        // Ratio operator-(const Ratio &ratio); 
+        // Ratio operator*(const Ratio &ratio); 
+        // Ratio operator-()const;
 
-    Ratio operator=(const Ratio &ratio);
-    Ratio operator+(const Ratio &ratio); 
-    Ratio operator-(const Ratio &ratio); 
-    Ratio operator*(const Ratio &ratio); 
-    Ratio operator-()const;
+void display();
 
 };
 
-Ratio::ratio()
-:
-{
-}
-
-Ratio::~ratio()
-{
-}
+// template <class T>
+// Ratio::ratio(T n, T d)
+// : n(0.f), d(0.f) //mettre quel type de base ?
+// {
+//     num = n;
+//     denom = d; 
+// }
 
 #endif

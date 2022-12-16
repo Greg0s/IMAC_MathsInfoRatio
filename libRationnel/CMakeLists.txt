@@ -4,10 +4,14 @@ cmake_minimum_required(VERSION 3.13)
 project(IMAC_MathsInfoRatio)
 
 # file to compile and name of the executable
-add_executable(IMAC_MathsInfoRatio src/main.cpp)
+add_executable(IMAC_MathsInfoRatio include/Ratio.hpp src/Ratio.cpp)
+
+
 
 # include directory
 target_include_directories(IMAC_MathsInfoRatio PRIVATE "include")
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # compilation options
 target_compile_features(IMAC_MathsInfoRatio PRIVATE cxx_std_11) # use at least c++ 11

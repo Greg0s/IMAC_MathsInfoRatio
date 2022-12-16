@@ -1,0 +1,3 @@
+/Users/emmaveauvy/Documents/2022-2023/IMAC_MathsInfoRatio/build/CMakeFiles/IMAC_MathsInfoRatio.dir
+/Users/emmaveauvy/Documents/2022-2023/IMAC_MathsInfoRatio/build/CMakeFiles/edit_cache.dir
+/Users/emmaveauvy/Documents/2022-2023/IMAC_MathsInfoRatio/build/CMakeFiles/rebuild_cache.dir
