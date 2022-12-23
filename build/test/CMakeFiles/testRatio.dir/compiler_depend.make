@@ -177,7 +177,32 @@ test/CMakeFiles/testRatio.dir/__/libRatio/src/Ratio.cpp.o: /home/gregoire/IMAC_M
   /usr/include/c++/7/istream \
   /usr/include/c++/7/bits/istream.tcc \
   /usr/include/c++/7/numeric \
-  /usr/include/c++/7/bits/stl_numeric.h
+  /usr/include/c++/7/bits/stl_numeric.h \
+  /usr/include/c++/7/cmath \
+  /usr/include/math.h \
+  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+  /usr/include/x86_64-linux-gnu/bits/mathinline.h \
+  /usr/include/c++/7/bits/specfun.h \
+  /usr/include/c++/7/tr1/gamma.tcc \
+  /usr/include/c++/7/tr1/special_function_util.h \
+  /usr/include/c++/7/tr1/bessel_function.tcc \
+  /usr/include/c++/7/tr1/special_function_util.h \
+  /usr/include/c++/7/tr1/beta_function.tcc \
+  /usr/include/c++/7/tr1/ell_integral.tcc \
+  /usr/include/c++/7/tr1/exp_integral.tcc \
+  /usr/include/c++/7/tr1/hypergeometric.tcc \
+  /usr/include/c++/7/tr1/legendre_function.tcc \
+  /usr/include/c++/7/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/7/tr1/poly_hermite.tcc \
+  /usr/include/c++/7/tr1/poly_laguerre.tcc \
+  /usr/include/c++/7/tr1/riemann_zeta.tcc
 
 test/CMakeFiles/testRatio.dir/src/test.cpp.o: /home/gregoire/IMAC_MathsInfoRatio/test/src/test.cpp \
   /usr/include/stdc-predef.h \
@@ -355,14 +380,69 @@ test/CMakeFiles/testRatio.dir/src/test.cpp.o: /home/gregoire/IMAC_MathsInfoRatio
   /usr/include/c++/7/istream \
   /usr/include/c++/7/bits/istream.tcc \
   /usr/include/c++/7/numeric \
-  /usr/include/c++/7/bits/stl_numeric.h
+  /usr/include/c++/7/bits/stl_numeric.h \
+  /usr/include/c++/7/cmath \
+  /usr/include/math.h \
+  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+  /usr/include/x86_64-linux-gnu/bits/mathinline.h \
+  /usr/include/c++/7/bits/specfun.h \
+  /usr/include/c++/7/tr1/gamma.tcc \
+  /usr/include/c++/7/tr1/special_function_util.h \
+  /usr/include/c++/7/tr1/bessel_function.tcc \
+  /usr/include/c++/7/tr1/special_function_util.h \
+  /usr/include/c++/7/tr1/beta_function.tcc \
+  /usr/include/c++/7/tr1/ell_integral.tcc \
+  /usr/include/c++/7/tr1/exp_integral.tcc \
+  /usr/include/c++/7/tr1/hypergeometric.tcc \
+  /usr/include/c++/7/tr1/legendre_function.tcc \
+  /usr/include/c++/7/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/7/tr1/poly_hermite.tcc \
+  /usr/include/c++/7/tr1/poly_laguerre.tcc \
+  /usr/include/c++/7/tr1/riemann_zeta.tcc
 
 
 /home/gregoire/IMAC_MathsInfoRatio/test/src/test.cpp:
 
+/usr/include/c++/7/tr1/riemann_zeta.tcc:
+
+/usr/include/c++/7/tr1/poly_laguerre.tcc:
+
+/usr/include/c++/7/tr1/poly_hermite.tcc:
+
+/usr/include/c++/7/tr1/modified_bessel_func.tcc:
+
+/usr/include/c++/7/tr1/legendre_function.tcc:
+
+/usr/include/c++/7/tr1/exp_integral.tcc:
+
+/usr/include/c++/7/tr1/beta_function.tcc:
+
+/usr/include/c++/7/tr1/bessel_function.tcc:
+
+/usr/include/c++/7/tr1/gamma.tcc:
+
+/usr/include/c++/7/bits/specfun.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
+
+/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
+
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
+
 /usr/include/c++/7/bits/stl_numeric.h:
 
 /usr/include/c++/7/numeric:
+
+/usr/include/c++/7/tr1/ell_integral.tcc:
 
 /usr/include/c++/7/bits/ostream.tcc:
 
@@ -416,6 +496,8 @@ test/CMakeFiles/testRatio.dir/src/test.cpp.o: /home/gregoire/IMAC_MathsInfoRatio
 
 /usr/include/c++/7/new:
 
+/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+
 /usr/include/x86_64-linux-gnu/bits/sysmacros.h:
 
 /usr/include/c++/7/bits/hash_bytes.h:
@@ -430,6 +512,8 @@ test/CMakeFiles/testRatio.dir/src/test.cpp.o: /home/gregoire/IMAC_MathsInfoRatio
 
 /usr/include/c++/7/initializer_list:
 
+/usr/include/math.h:
+
 /usr/include/c++/7/bits/exception_ptr.h:
 
 /usr/include/c++/7/iostream:
@@ -438,6 +522,8 @@ test/CMakeFiles/testRatio.dir/src/test.cpp.o: /home/gregoire/IMAC_MathsInfoRatio
 
 /usr/include/c++/7/bits/concept_check.h:
 
+/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
+
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
@@ -445,6 +531,8 @@ test/CMakeFiles/testRatio.dir/src/test.cpp.o: /home/gregoire/IMAC_MathsInfoRatio
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
 /usr/include/c++/7/ext/new_allocator.h:
+
+/usr/include/c++/7/tr1/hypergeometric.tcc:
 
 /usr/include/c++/7/exception:
 
@@ -572,11 +660,15 @@ test/CMakeFiles/testRatio.dir/src/test.cpp.o: /home/gregoire/IMAC_MathsInfoRatio
 
 /usr/include/errno.h:
 
+/usr/include/c++/7/cmath:
+
 /usr/include/sched.h:
 
 /usr/include/c++/7/bits/locale_facets.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
 
@@ -584,7 +676,11 @@ test/CMakeFiles/testRatio.dir/src/test.cpp.o: /home/gregoire/IMAC_MathsInfoRatio
 
 /usr/include/stdlib.h:
 
+/usr/include/x86_64-linux-gnu/bits/mathinline.h:
+
 /usr/include/time.h:
+
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
 
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
@@ -701,6 +797,8 @@ test/CMakeFiles/testRatio.dir/src/test.cpp.o: /home/gregoire/IMAC_MathsInfoRatio
 /usr/include/linux/errno.h:
 
 /usr/include/c++/7/cwctype:
+
+/usr/include/c++/7/tr1/special_function_util.h:
 
 /usr/include/asm-generic/errno-base.h:
 
