@@ -57,7 +57,17 @@
         "tuple": "cpp",
         "type_traits": "cpp",
         "typeinfo": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "cmath": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "memory_resource": "cpp",
+        "optional": "cpp",
+        "sstream": "cpp",
+        "numeric": "cpp"
     },
-    "cmake.sourceDirectory": "${workspaceFolder}/libRationnel"
+    "cmake.sourceDirectory": "${workspaceFolder}/libRationnel",
+    "cmake.configureOnOpen": true
 }

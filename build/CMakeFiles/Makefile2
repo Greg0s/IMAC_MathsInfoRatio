@@ -45,60 +45,119 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/3.24.2/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/3.24.2/bin/cmake -E rm -f
+RM = /usr/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/emmaveauvy/Documents/2022-2023/IMAC_MathsInfoRatio/libRationnel
+CMAKE_SOURCE_DIR = /home/gregoire/IMAC_MathsInfoRatio
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/emmaveauvy/Documents/2022-2023/IMAC_MathsInfoRatio/build
+CMAKE_BINARY_DIR = /home/gregoire/IMAC_MathsInfoRatio/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/IMAC_MathsInfoRatio.dir/all
+all: libRatio/all
+all: test/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: libRatio/preinstall
+preinstall: test/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/IMAC_MathsInfoRatio.dir/clean
+clean: libRatio/clean
+clean: test/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/IMAC_MathsInfoRatio.dir
+# Directory level rules for directory libRatio
+
+# Recursive "all" directory target.
+libRatio/all: libRatio/CMakeFiles/IMAC_LibRatio.dir/all
+.PHONY : libRatio/all
+
+# Recursive "preinstall" directory target.
+libRatio/preinstall:
+.PHONY : libRatio/preinstall
+
+# Recursive "clean" directory target.
+libRatio/clean: libRatio/CMakeFiles/IMAC_LibRatio.dir/clean
+.PHONY : libRatio/clean
+
+#=============================================================================
+# Directory level rules for directory test
+
+# Recursive "all" directory target.
+test/all: test/CMakeFiles/testRatio.dir/all
+.PHONY : test/all
+
+# Recursive "preinstall" directory target.
+test/preinstall:
+.PHONY : test/preinstall
+
+# Recursive "clean" directory target.
+test/clean: test/CMakeFiles/testRatio.dir/clean
+.PHONY : test/clean
+
+#=============================================================================
+# Target rules for target libRatio/CMakeFiles/IMAC_LibRatio.dir
 
 # All Build rule for target.
-CMakeFiles/IMAC_MathsInfoRatio.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IMAC_MathsInfoRatio.dir/build.make CMakeFiles/IMAC_MathsInfoRatio.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IMAC_MathsInfoRatio.dir/build.make CMakeFiles/IMAC_MathsInfoRatio.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/emmaveauvy/Documents/2022-2023/IMAC_MathsInfoRatio/build/CMakeFiles --progress-num=1,2 "Built target IMAC_MathsInfoRatio"
-.PHONY : CMakeFiles/IMAC_MathsInfoRatio.dir/all
+libRatio/CMakeFiles/IMAC_LibRatio.dir/all:
+	$(MAKE) $(MAKESILENT) -f libRatio/CMakeFiles/IMAC_LibRatio.dir/build.make libRatio/CMakeFiles/IMAC_LibRatio.dir/depend
+	$(MAKE) $(MAKESILENT) -f libRatio/CMakeFiles/IMAC_LibRatio.dir/build.make libRatio/CMakeFiles/IMAC_LibRatio.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gregoire/IMAC_MathsInfoRatio/build/CMakeFiles --progress-num=1,2 "Built target IMAC_LibRatio"
+.PHONY : libRatio/CMakeFiles/IMAC_LibRatio.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/IMAC_MathsInfoRatio.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/emmaveauvy/Documents/2022-2023/IMAC_MathsInfoRatio/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/IMAC_MathsInfoRatio.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/emmaveauvy/Documents/2022-2023/IMAC_MathsInfoRatio/build/CMakeFiles 0
-.PHONY : CMakeFiles/IMAC_MathsInfoRatio.dir/rule
+libRatio/CMakeFiles/IMAC_LibRatio.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gregoire/IMAC_MathsInfoRatio/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libRatio/CMakeFiles/IMAC_LibRatio.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gregoire/IMAC_MathsInfoRatio/build/CMakeFiles 0
+.PHONY : libRatio/CMakeFiles/IMAC_LibRatio.dir/rule
 
 # Convenience name for target.
-IMAC_MathsInfoRatio: CMakeFiles/IMAC_MathsInfoRatio.dir/rule
-.PHONY : IMAC_MathsInfoRatio
+IMAC_LibRatio: libRatio/CMakeFiles/IMAC_LibRatio.dir/rule
+.PHONY : IMAC_LibRatio
 
 # clean rule for target.
-CMakeFiles/IMAC_MathsInfoRatio.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IMAC_MathsInfoRatio.dir/build.make CMakeFiles/IMAC_MathsInfoRatio.dir/clean
-.PHONY : CMakeFiles/IMAC_MathsInfoRatio.dir/clean
+libRatio/CMakeFiles/IMAC_LibRatio.dir/clean:
+	$(MAKE) $(MAKESILENT) -f libRatio/CMakeFiles/IMAC_LibRatio.dir/build.make libRatio/CMakeFiles/IMAC_LibRatio.dir/clean
+.PHONY : libRatio/CMakeFiles/IMAC_LibRatio.dir/clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/testRatio.dir
+
+# All Build rule for target.
+test/CMakeFiles/testRatio.dir/all:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/testRatio.dir/build.make test/CMakeFiles/testRatio.dir/depend
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/testRatio.dir/build.make test/CMakeFiles/testRatio.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gregoire/IMAC_MathsInfoRatio/build/CMakeFiles --progress-num=3,4,5 "Built target testRatio"
+.PHONY : test/CMakeFiles/testRatio.dir/all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/testRatio.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gregoire/IMAC_MathsInfoRatio/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/testRatio.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gregoire/IMAC_MathsInfoRatio/build/CMakeFiles 0
+.PHONY : test/CMakeFiles/testRatio.dir/rule
+
+# Convenience name for target.
+testRatio: test/CMakeFiles/testRatio.dir/rule
+.PHONY : testRatio
+
+# clean rule for target.
+test/CMakeFiles/testRatio.dir/clean:
+	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/testRatio.dir/build.make test/CMakeFiles/testRatio.dir/clean
+.PHONY : test/CMakeFiles/testRatio.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

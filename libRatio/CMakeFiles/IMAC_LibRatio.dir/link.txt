@@ -1,0 +1,2 @@
+/usr/bin/ar qc libIMAC_LibRatio.a CMakeFiles/IMAC_LibRatio.dir/src/Ratio.cpp.o
+/usr/bin/ranlib libIMAC_LibRatio.a
