@@ -7,8 +7,6 @@
 #include <numeric> //for gcd
 #include <cmath> //for floor
 
-#include <typeinfo>
-
 template<class T>
 class Ratio{
     private:
