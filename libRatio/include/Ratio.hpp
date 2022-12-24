@@ -7,13 +7,15 @@
 #include <numeric> //for gcd
 #include <cmath> //for floor
 
+#include <typeinfo>
+
 template<class T>
 class Ratio{
     private:
         T num;
         T denom;
     public:
-        Ratio(T n = 0, T d = 1): num(n), denom(d){};
+        Ratio(T n = 0., T d = 1.): num(n), denom(d){};
         ~Ratio() = default;
     
         void display() const;
@@ -29,11 +31,15 @@ class Ratio{
         Ratio operator-(const Ratio &ratio); 
         Ratio operator*(const Ratio &ratio); 
         Ratio operator/( Ratio &ratio); 
-        Ratio operator-()const;
+        Ratio operator-() const;
+
+        bool operator==(Ratio &ratio);
+        bool operator!=(Ratio &ratio);
+
 
         void irreducible();
         Ratio absolute();
-        T floor();
+        T floor() const;
 
 };
 
@@ -58,7 +64,7 @@ void Ratio<T>::irreducible(){
 
 template<typename T>
 void Ratio<T>::display() const{
-    std::cout << num << " / " << denom << std::endl;
+    std::cout << num << "/" << denom << std::endl;
 }
 
 template<typename T>
@@ -153,10 +159,28 @@ Ratio<T> Ratio<T>::absolute(){
 }
 
 template<typename T>
-T Ratio<T>::floor(){
-    return std::floor(num/denom);
-    //PB : floor devrait retourner -5 
-    //quand res = -4,1 mais return -4
+T Ratio<T>::floor() const{
+    return std::floor((double)num/denom);
+}
+
+template<typename T>
+bool Ratio<T>::operator==(Ratio &ratio){
+    ratio.irreducible();
+    this->irreducible();
+    if(num == ratio.num && denom == ratio.denom){
+        return true;
+    }
+    return false;
+}
+
+template<typename T>
+bool Ratio<T>::operator!=(Ratio &ratio){
+    ratio.irreducible();
+    this->irreducible();
+    if(num != ratio.num || denom != ratio.denom){
+        return true;
+    }
+    return false;
 }
 
 template<typename T>
