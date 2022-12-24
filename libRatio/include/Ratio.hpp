@@ -3,8 +3,9 @@
 #ifndef Ratio_H
 #define Ratio_H
 
-#include <iostream>
-#include <numeric>
+#include <iostream> 
+#include <numeric> //for gcd
+#include <cmath> //for floor
 
 template<class T>
 class Ratio{
@@ -31,6 +32,8 @@ class Ratio{
         Ratio operator-()const;
 
         void irreducible();
+        Ratio absolute();
+        T floor();
 
 };
 
@@ -51,6 +54,8 @@ void Ratio<T>::irreducible(){
     }
 }
 
+
+
 template<typename T>
 void Ratio<T>::display() const{
     std::cout << num << " / " << denom << std::endl;
@@ -64,6 +69,17 @@ Ratio<T> Ratio<T>::operator=(Ratio &ratio){
     }
     return *this;
 }
+
+/*
+template<typename T>
+bool Ratio<T>::operator==(Ratio &ratio){
+    if(num == ratio.num && denom==ratio.denom){
+        return true;
+    }
+    else{
+        return false;
+    }
+}*/
 
 template<typename T>
 Ratio<T> Ratio<T>::operator+(const Ratio &ratio){
@@ -124,11 +140,29 @@ Ratio<T> Ratio<T>::operator-()const{
 }
 
 template<typename T>
+Ratio<T> Ratio<T>::absolute(){
+    Ratio<T> res;
+    if(num < 0){
+        res.num = -num;
+
+    }else{
+        res.num = num;
+    }
+    res.denom = denom;
+    return res;
+}
+
+template<typename T>
+T Ratio<T>::floor(){
+    return std::floor(num/denom);
+    //PB : floor devrait retourner -5 
+    //quand res = -4,1 mais return -4
+}
+
+template<typename T>
 std::ostream& operator<< (std::ostream& stream, const Ratio<T> &ratio){
         std::cout<< ratio.getNum() << "/" << ratio.getDenom();
         return std::cout<<std::endl;
 }
-
-
 
 #endif
