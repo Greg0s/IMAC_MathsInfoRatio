@@ -6,6 +6,7 @@
 #include <iostream> 
 #include <numeric> //for gcd
 #include <cmath> //for floor
+#include <math.h> //for pow
 
 template<class T>
 class Ratio{
@@ -33,7 +34,10 @@ class Ratio{
 
         bool operator==(Ratio &ratio);
         bool operator!=(Ratio &ratio);
-
+        bool operator>(Ratio &ratio);
+        bool operator<(Ratio &ratio);
+        bool operator>=(Ratio &ratio);
+        bool operator<=(Ratio &ratio);
 
         void irreducible();
         Ratio absolute();
@@ -182,9 +186,96 @@ bool Ratio<T>::operator!=(Ratio &ratio){
 }
 
 template<typename T>
+bool Ratio<T>::operator> (Ratio &ratio){
+    ratio.irreducible();
+    this->irreducible();
+    if(num > ratio.num || denom > ratio.denom){
+        return true;
+    }
+    return false;
+}
+
+template<typename T>
+bool Ratio<T>::operator< (Ratio &ratio){
+    ratio.irreducible();
+    this->irreducible();
+    if(num < ratio.num || denom < ratio.denom){
+        return true;
+    }
+    return false;
+}
+
+template<typename T>
+bool Ratio<T>::operator<= (Ratio &ratio){
+    ratio.irreducible();
+    this->irreducible();
+    if(num < ratio.num || denom < ratio.denom){
+        return true;
+    }
+    return false;
+}
+
+template<typename T>
+bool Ratio<T>::operator>= (Ratio &ratio){
+    ratio.irreducible();
+    this->irreducible();
+    if(num >= ratio.num || denom >= ratio.denom){
+        return true;
+    }
+    return false;
+}
+
+template<typename T>
 std::ostream& operator<< (std::ostream& stream, const Ratio<T> &ratio){
         std::cout<< ratio.getNum() << "/" << ratio.getDenom();
         return std::cout<<std::endl;
+}
+
+
+/*
+------------Pseudo code--------------
+Function convert_float_to_ratio
+Input: x ∈ R+ : un nombre réel à convertir en rationnel
+nb_iter ∈ N : le nombre d’appels r ́ecursifs restant
+
+ // première condition d’arrêt
+ if x == 0 then return 0/1
+
+ // seconde condition d’arrêt
+ if nb iter == 0 then return 0/1
+
+ // appel récursif si x < 1
+ if x < 1 then
+ return (convert_float_to_ratio(1/x, nb_iter))^-1
+
+ // appel récursif si x > 1
+ if x > 1 then
+    q = [x] // partie entière
+    return (q/1 + convert_float_to_ratio(x − q, nb iter − 1))
+
+*/
+
+Ratio<T> convert_float_to_ratio(float x, uint nb_iter){
+
+    int q;
+    if(x==0){
+        return 0/1;
+    }
+    if(nb_iter==0){
+        return 0/1;
+    }
+
+    if(x<1){
+        return pow((convert_float_to_ratio(1/x, nb_iter)),-1);
+    }
+
+    if(x>1){
+
+        q=floor(x);
+        return ((q/1)+convert_float_to_ratio(x-q, nb_iter-1));
+
+    }
+
 }
 
 #endif

@@ -5,7 +5,7 @@ int main(){
     Ratio<int> r1(4, 5);
     Ratio<int> r2(9,2);
     Ratio<int> r3(-9,2);
-    Ratio<int> r4(8,10);
+    Ratio<int> r4(10,10);
     
     r1.display();
 
@@ -44,6 +44,24 @@ int main(){
     if(r1 != r4){
         std::cout << "!=2" << std::endl;
     }
+
+    if(r1 > r4){
+        std::cout << ">4" << std::endl;
+    }
+
+    if(r2 < r4){
+        std::cout << "<4" << std::endl;
+    }
+
+    if(r1 >= r4){
+        std::cout << ">=4" << std::endl;
+    }
+
+    if(r2 <= r4){
+        std::cout << "<=4" << std::endl;
+    }
+
+
     
     return 0;
 }
