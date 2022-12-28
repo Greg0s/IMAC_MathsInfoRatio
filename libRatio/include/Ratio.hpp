@@ -187,9 +187,15 @@ bool Ratio<T>::operator!=(Ratio &ratio){
 
 template<typename T>
 bool Ratio<T>::operator> (Ratio &ratio){
-    ratio.irreducible();
-    this->irreducible();
-    if(num > ratio.num || denom > ratio.denom){
+   
+    T num2=ratio.num;
+    T num1 = num;
+    if(denom != ratio.denom){
+        num1 = num1 * ratio.denom;
+        num2 = num2 * denom;
+    }
+
+    if(num1 > num2){
         return true;
     }
     return false;
@@ -197,9 +203,14 @@ bool Ratio<T>::operator> (Ratio &ratio){
 
 template<typename T>
 bool Ratio<T>::operator< (Ratio &ratio){
-    ratio.irreducible();
-    this->irreducible();
-    if(num < ratio.num || denom < ratio.denom){
+   T num2=ratio.num;
+    T num1 = num;
+    if(denom != ratio.denom){
+        num1 = num1 * ratio.denom;
+        num2 = num2 * denom;
+    }
+
+    if(num1 < num2){
         return true;
     }
     return false;
@@ -207,9 +218,14 @@ bool Ratio<T>::operator< (Ratio &ratio){
 
 template<typename T>
 bool Ratio<T>::operator<= (Ratio &ratio){
-    ratio.irreducible();
-    this->irreducible();
-    if(num < ratio.num || denom < ratio.denom){
+   T num2=ratio.num;
+    T num1 = num;
+    if(denom != ratio.denom){
+        num1 = num1 * ratio.denom;
+        num2 = num2 * denom;
+    }
+
+    if(num1 <= num2){
         return true;
     }
     return false;
@@ -217,9 +233,14 @@ bool Ratio<T>::operator<= (Ratio &ratio){
 
 template<typename T>
 bool Ratio<T>::operator>= (Ratio &ratio){
-    ratio.irreducible();
-    this->irreducible();
-    if(num >= ratio.num || denom >= ratio.denom){
+    T num2=ratio.num;
+    T num1 = num;
+    if(denom != ratio.denom){
+        num1 = num1 * ratio.denom;
+        num2 = num2 * denom;
+    }
+
+    if(num1 >= num2){
         return true;
     }
     return false;
