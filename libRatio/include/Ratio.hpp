@@ -6,7 +6,7 @@
 #include <iostream> 
 #include <numeric> //for gcd
 #include <cmath> //for floor
-#include <math.h> //for pow
+//#include <math.h> //for pow
 
 template<class T>
 class Ratio{
@@ -29,7 +29,7 @@ class Ratio{
         Ratio operator+(const Ratio &ratio); 
         Ratio operator-(const Ratio &ratio); 
         Ratio operator*(const Ratio &ratio); 
-        Ratio operator/( Ratio &ratio); 
+        Ratio operator/(Ratio &ratio); 
         Ratio operator-() const;
 
         bool operator==(Ratio &ratio);
@@ -42,6 +42,9 @@ class Ratio{
         void irreducible();
         Ratio absolute();
         T floor() const;
+        Ratio invert();
+
+        Ratio convert_float_to_ratio(float x, uint nb_iter);
 
 };
 
@@ -247,6 +250,12 @@ bool Ratio<T>::operator>= (Ratio &ratio){
 }
 
 template<typename T>
+Ratio<T> Ratio<T>::invert(){
+    Ratio res(denom, num);
+    return res;
+}
+
+template<typename T>
 std::ostream& operator<< (std::ostream& stream, const Ratio<T> &ratio){
         std::cout<< ratio.getNum() << "/" << ratio.getDenom();
         return std::cout<<std::endl;
@@ -276,9 +285,9 @@ nb_iter ∈ N : le nombre d’appels r ́ecursifs restant
 
 */
 
+template<typename T>
 Ratio<T> convert_float_to_ratio(float x, uint nb_iter){
 
-    int q;
     if(x==0){
         return 0/1;
     }
@@ -287,15 +296,21 @@ Ratio<T> convert_float_to_ratio(float x, uint nb_iter){
     }
 
     if(x<1){
-        return pow((convert_float_to_ratio(1/x, nb_iter)),-1);
+        Ratio<T> res = convert_float_to_ratio<T>(1/x, nb_iter);
+        return res.invert();
     }
 
     if(x>1){
 
-        q=floor(x);
-        return ((q/1)+convert_float_to_ratio(x-q, nb_iter-1));
+        int q=floor(x);
+        Ratio<T> qRatio(q, 1);
+        Ratio<T> res = convert_float_to_ratio<T>(x-q, nb_iter-1);
+        return 1;
+        //return qRatio + res; 
+        //addition provoque erreurs, à corriger
 
     }
+    return 0;
 
 }
 
