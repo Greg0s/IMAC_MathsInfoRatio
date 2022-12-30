@@ -59,7 +59,7 @@ class Ratio{
 
 template<typename T>
 void Ratio<T>::irreducible(){
-    int gcd = std::gcd(denom, num);
+    int gcd = std::gcd((int) denom, (int) num);
     if(gcd > 1){
         denom = denom/gcd;
         num = num/gcd;
@@ -68,7 +68,7 @@ void Ratio<T>::irreducible(){
 
 template<typename T>
 void Ratio<T>::commonDenom(Ratio * ratio)
-{
+{//met au même dénominateur
     if(denom != ratio->denom){
         num = num * ratio->denom;
         ratio->num = ratio->num * denom;
@@ -90,17 +90,6 @@ Ratio<T> Ratio<T>::operator=(Ratio &ratio){
     }
     return *this;
 }
-
-/*
-template<typename T>
-bool Ratio<T>::operator==(Ratio &ratio){
-    if(num == ratio.num && denom==ratio.denom){
-        return true;
-    }
-    else{
-        return false;
-    }
-}*/
 
 template<typename T>
 Ratio<T> Ratio<T>::operator+(const Ratio &ratio) const{
@@ -267,29 +256,33 @@ nb_iter ∈ N : le nombre d’appels r ́ecursifs restant
 template<typename T>
 Ratio<T> convert_float_to_ratio(float x, uint nb_iter){
 
-    if(x==0){
+    if(x == 0){
         return 0/1;
     }
-    if(nb_iter==0){
+    if(nb_iter == 0){
         return 0/1;
     }
 
-    if(x<1){
+    if(x < 1){
         Ratio<T> res = convert_float_to_ratio<T>(1/x, nb_iter);
         return res.invert();
     }
 
-    if(x>1){
-
-        int q=floor(x);
+    if(x > 1){
+        int q=floor(x); //partie entière
+        std::cout << "x : " << x << " et q : " << q << std::endl;
         Ratio<T> qRatio(q, 1);
         Ratio<T> res = convert_float_to_ratio<T>(x-q, nb_iter-1);
-        return 1;
-        //return qRatio + res; 
-        //addition provoque erreurs, à corriger
-
+        std::cout << "qRatio : " << qRatio << " et res : " << res << std::endl;
+        //return 1;
+        return qRatio + res; 
     }
-    return 0;
+
+    if(x < 0){//Cas négatif ne marche pas, seg fault, surement pas ce que j'ai mis du tt
+        return -convert_float_to_ratio<T>(-x, nb_iter-1);
+    }
+    
+    return 0/1;
 
 }
 
