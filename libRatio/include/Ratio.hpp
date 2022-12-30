@@ -26,7 +26,7 @@ class Ratio{
         inline void setDenom(T d){ denom = d; };
 
         Ratio operator=(Ratio &ratio);
-        Ratio operator+(const Ratio &ratio); 
+        Ratio operator+(const Ratio &ratio) const; 
         Ratio operator-(const Ratio &ratio); 
         Ratio operator*(const Ratio &ratio); 
         Ratio operator/(Ratio &ratio); 
@@ -42,6 +42,7 @@ class Ratio{
         void irreducible();
         Ratio absolute();
         T floor() const;
+        void commonDenom(Ratio * ratio);
         Ratio invert();
 
         Ratio convert_float_to_ratio(float x, uint nb_iter);
@@ -65,7 +66,16 @@ void Ratio<T>::irreducible(){
     }
 }
 
-
+template<typename T>
+void Ratio<T>::commonDenom(Ratio * ratio)
+{
+    if(denom != ratio->denom){
+        num = num * ratio->denom;
+        ratio->num = ratio->num * denom;
+        denom = denom * ratio->denom;
+        ratio->denom = denom;
+    }
+}
 
 template<typename T>
 void Ratio<T>::display() const{
@@ -93,33 +103,23 @@ bool Ratio<T>::operator==(Ratio &ratio){
 }*/
 
 template<typename T>
-Ratio<T> Ratio<T>::operator+(const Ratio &ratio){
-    Ratio res;
-    T num2=ratio.num;
-    T num1 = num;
-    if(denom != ratio.denom){
-        num1 = num1 * ratio.denom;
-        num2 = num2 * denom;
-    }
-    res.num = num2 + num1;
-    res.denom = denom * ratio.denom;
+Ratio<T> Ratio<T>::operator+(const Ratio &ratio) const{
+    Ratio res(num, denom);
+    Ratio ratioTmp = ratio;
+
+    res.commonDenom(&ratioTmp);
+    res.num = ratioTmp.num + res.num;
     res.irreducible();
     return res;
 }
 
 template<typename T>
 Ratio<T> Ratio<T>::operator-(const Ratio &ratio){
-    Ratio res;
-    T num2=ratio.num;
-    T num1=num;
-    if(denom != ratio.denom){
-        num1 = num1 * ratio.denom;
-        num2 = ratio.num * denom;
-    }
-    res.num = num1 - num2;
-    std::cout << "Num : " << num1 << std::endl;
-    std::cout << "ratio.num : " << num2 << std::endl;
-    res.denom = denom * ratio.denom;
+    Ratio res(num, denom);
+    Ratio ratioTmp = ratio;
+
+    res.commonDenom(&ratioTmp);
+    res.num = res.num - ratioTmp.num;
     res.irreducible();
     return res;
 }
@@ -189,61 +189,40 @@ bool Ratio<T>::operator!=(Ratio &ratio){
 }
 
 template<typename T>
-bool Ratio<T>::operator> (Ratio &ratio){
-   
-    T num2=ratio.num;
-    T num1 = num;
-    if(denom != ratio.denom){
-        num1 = num1 * ratio.denom;
-        num2 = num2 * denom;
-    }
+bool Ratio<T>::operator>(Ratio &ratio){
+    this->commonDenom(&ratio);
 
-    if(num1 > num2){
+    if(num > ratio.num){
         return true;
     }
     return false;
 }
 
 template<typename T>
-bool Ratio<T>::operator< (Ratio &ratio){
-   T num2=ratio.num;
-    T num1 = num;
-    if(denom != ratio.denom){
-        num1 = num1 * ratio.denom;
-        num2 = num2 * denom;
-    }
+bool Ratio<T>::operator<(Ratio &ratio){
+    this->commonDenom(&ratio);
 
-    if(num1 < num2){
+    if(num < ratio.num){
         return true;
     }
     return false;
 }
 
 template<typename T>
-bool Ratio<T>::operator<= (Ratio &ratio){
-   T num2=ratio.num;
-    T num1 = num;
-    if(denom != ratio.denom){
-        num1 = num1 * ratio.denom;
-        num2 = num2 * denom;
-    }
+bool Ratio<T>::operator<=(Ratio &ratio){
+    this->commonDenom(&ratio);
 
-    if(num1 <= num2){
+    if(num <= ratio.num){
         return true;
     }
-    return false;
+    return false;   
 }
 
 template<typename T>
 bool Ratio<T>::operator>= (Ratio &ratio){
-    T num2=ratio.num;
-    T num1 = num;
-    if(denom != ratio.denom){
-        num1 = num1 * ratio.denom;
-        num2 = num2 * denom;
-    }
+    this->commonDenom(&ratio);
 
-    if(num1 >= num2){
+    if(num >= ratio.num){
         return true;
     }
     return false;
