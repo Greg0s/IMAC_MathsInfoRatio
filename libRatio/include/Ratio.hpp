@@ -282,7 +282,7 @@ Ratio<T> convert_float_to_ratio(float x, uint nb_iter){
         return res.invert();
     }
 
-    if(x > 1){
+    if(x > 1 || x < 0){
         int q=floor(x); //partie entière
         //std::cout << "x : " << x << " et q : " << q << std::endl;
         Ratio<T> qRatio(q, 1);
@@ -290,14 +290,6 @@ Ratio<T> convert_float_to_ratio(float x, uint nb_iter){
         //std::cout << "qRatio : " << qRatio << " et res : " << res << std::endl;
         return qRatio + res; 
     }
-
-    if(x < 0){//Cas négatif
-        int q = floor(x);
-        Ratio<T> qRatio(q, 1);
-        // return 1;
-        return qRatio + convert_float_to_ratio<T>(x-q, nb_iter-1);
-    }
-
 
 }
 

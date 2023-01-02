@@ -82,7 +82,7 @@ int main(){
     Ratio<int> aRatio2 = convert_float_to_ratio<int>(aFloat2, 3);
     std::cout << "convert float : " << aFloat2 << " to ratio : " << aRatio2 << std::endl;
 
-    float aFloat3 = -1.2;
+    float aFloat3 = -8.35;
     Ratio<int> aRatio3 = convert_float_to_ratio<int>(aFloat3, 4);
     std::cout << "convert float : " << aFloat3 << " to ratio : " << aRatio3 << std::endl;
 
