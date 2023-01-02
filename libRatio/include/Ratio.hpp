@@ -50,7 +50,7 @@ class Ratio{
 
 // template <class T>
 // Ratio::ratio(T n, T d)
-// : n(0.f), d(0.f) //mettre quel type de base ?
+// : n(0), d(0)
 // {
 //     num = n;
 //     denom = d; 
