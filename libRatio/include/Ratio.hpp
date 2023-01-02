@@ -39,10 +39,9 @@ class Ratio{
         bool operator>=(Ratio &ratio);
         bool operator<=(Ratio &ratio);
 
-        Ratio operator*(const float &x);
+        Ratio operator*(float &x);//ratio * float
 
         void irreducible();
-        Ratio toRatio() const;
         Ratio absolute();
         T floor() const;
         void commonDenom(Ratio * ratio);
@@ -67,17 +66,7 @@ void Ratio<T>::irreducible(){
     }
 }
 
-// template<typename T>
-// Ratio<T> Ratio<T>::toRatio() const{
-//     Ratio<T> res = *this;
 
-//     while(num / std::floor(num) != 1 && denom / std::floor(denom) != 1){
-//         res.num *= 10;
-//         res.denom *= 10;
-//     }
-//     res.irreducible();
-//     return res;
-// }
 
 template<typename T>
 void Ratio<T>::commonDenom(Ratio * ratio)
@@ -237,15 +226,7 @@ Ratio<T> Ratio<T>::invert(){
 }
 
 template<typename T>
-Ratio<T> Ratio<T>::operator*(const float &x){
-    Ratio res(num, denom);
-    res.num = num * x;
-    res.irreducible();
-    return res;    
-}
-
-template<typename T>
-float operator*(const float &x, Ratio<T> ratio){
+float operator*(const float &x, Ratio<T> ratio){//float * ratio
     float res = x * ratio.getNum() / ratio.getDenom();
     return res;    
 }
@@ -305,6 +286,13 @@ Ratio<T> convert_float_to_ratio(const float x, const uint nb_iter){
         return qRatio + res; 
     }
 
+    return 0/1;
+}
+
+template<typename T>
+Ratio<T> operator*(Ratio<T> ratio, const float &x){//float * ratio
+    Ratio<T> xRatio = convert_float_to_ratio<int>(x, 5);
+    return ratio * xRatio;    
 }
 
 #endif

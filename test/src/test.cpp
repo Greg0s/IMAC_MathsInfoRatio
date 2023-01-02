@@ -27,10 +27,10 @@ int main(){
     std::cout << r2 / r1 << std::endl;
 
     std::cout << "Test multiplication ratio * float" << std::endl;
-    std::cout << r1 * 1.5 << std::endl;
+    std::cout << r1 * 2.45 << std::endl;
 
     std::cout << "Test multiplication float * ratio" << std::endl;
-    std::cout << 1.5 * r1 << std::endl << std::endl;
+    std::cout << 2.45 * r1 << std::endl << std::endl;
 
     std::cout << "Test moins unaire" << std::endl;
     std::cout<< -r2<< std::endl;
@@ -90,7 +90,7 @@ int main(){
     std::cout << "convert float : " << aFloat2 << " to ratio : " << aRatio2 << std::endl;
 
     float aFloat3 = -8.35;
-    Ratio<int> aRatio3 = convert_float_to_ratio<int>(aFloat3, 4);
+    Ratio<int> aRatio3 = convert_float_to_ratio<int>(aFloat3, 5);
     std::cout << "convert float : " << aFloat3 << " to ratio : " << aRatio3 << std::endl;
 
     
