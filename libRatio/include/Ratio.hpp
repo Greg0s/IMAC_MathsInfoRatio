@@ -39,6 +39,8 @@ class Ratio{
         bool operator>=(Ratio &ratio);
         bool operator<=(Ratio &ratio);
 
+        Ratio operator*(const float &x);
+
         void irreducible();
         Ratio toRatio() const;
         Ratio absolute();
@@ -232,6 +234,20 @@ template<typename T>
 Ratio<T> Ratio<T>::invert(){
     Ratio res(denom, num);
     return res;
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::operator*(const float &x){
+    Ratio res(num, denom);
+    res.num = num * x;
+    res.irreducible();
+    return res;    
+}
+
+template<typename T>
+float operator*(const float &x, Ratio<T> ratio){
+    float res = x * ratio.getNum() / ratio.getDenom();
+    return res;    
 }
 
 template<typename T>

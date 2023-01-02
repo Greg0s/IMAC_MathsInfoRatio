@@ -26,9 +26,15 @@ int main(){
     std::cout << r1 / r2 << std::endl;
     std::cout << r2 / r1 << std::endl;
 
+    std::cout << "Test multiplication ratio * float" << std::endl;
+    std::cout << r1 * 1.5 << std::endl;
+
+    std::cout << "Test multiplication float * ratio" << std::endl;
+    std::cout << 1.5 * r1 << std::endl << std::endl;
+
     std::cout << "Test moins unaire" << std::endl;
     std::cout<< -r2<< std::endl;
-    //std::cout<< -r3<< std::endl;
+    std::cout<< -r3<< std::endl;
 
     std::cout << "Test absolute : " << r3.absolute() << std::endl;
 
