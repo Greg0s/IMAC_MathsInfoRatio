@@ -73,7 +73,7 @@ int main(){
     std::cout <<" ----------- "<< std::endl;
 
     std::cout << "Test multiplication float * ratio" << std::endl;
-    if((2.45 * r1) == 1,96){
+    if((2.45 * r1) == 1.96){
         std::cout << "c'est ok" << std::endl;
         std::cout << 2.45 * r1 << std::endl << std::endl;
     }
@@ -148,6 +148,10 @@ int main(){
     Ratio<int> aRatio3 = convert_float_to_ratio<int>(aFloat3, 5);
     std::cout << "convert float : " << aFloat3 << " to ratio : " << aRatio3 << std::endl;
 
+    std::cout << std::endl << "Test ratio grand nombre" << std::endl;
+    std::cout << convert_float_to_ratio<double>(64465.5456456,10);
+      std::cout << std::endl << "Test ratio petit nombre" << std::endl;
+    std::cout << convert_float_to_ratio<double>(0.5456456,10);
     
     return 0;
 
