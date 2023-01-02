@@ -6,7 +6,6 @@
 #include <iostream> 
 #include <numeric> //for gcd
 #include <cmath> //for floor
-//#include <math.h> //for pow
 
 template<class T>
 class Ratio{
@@ -67,10 +66,10 @@ void Ratio<T>::irreducible(){
 }
 
 
-
+//met au même dénominateur
 template<typename T>
 void Ratio<T>::commonDenom(Ratio * ratio)
-{//met au même dénominateur
+{
     if(denom != ratio->denom){
         num = num * ratio->denom;
         ratio->num = ratio->num * denom;
@@ -79,11 +78,13 @@ void Ratio<T>::commonDenom(Ratio * ratio)
     }
 }
 
+//affichage des ratios
 template<typename T>
 void Ratio<T>::display() const{
     std::cout << num << "/" << denom << std::endl;
 }
 
+//Surchage de l'opérateur =
 template<typename T>
 Ratio<T> Ratio<T>::operator=(Ratio &ratio){
     if(this != &ratio){
@@ -93,6 +94,7 @@ Ratio<T> Ratio<T>::operator=(Ratio &ratio){
     return *this;
 }
 
+//Surchage de l'opérateur +
 template<typename T>
 Ratio<T> Ratio<T>::operator+(const Ratio &ratio) const{
     Ratio res(num, denom);
@@ -104,6 +106,7 @@ Ratio<T> Ratio<T>::operator+(const Ratio &ratio) const{
     return res;
 }
 
+//Surchage de l'opérateur -
 template<typename T>
 Ratio<T> Ratio<T>::operator-(const Ratio &ratio){
     Ratio res(num, denom);
@@ -115,6 +118,7 @@ Ratio<T> Ratio<T>::operator-(const Ratio &ratio){
     return res;
 }
 
+//Surchage de l'opérateur *
 template<typename T>
 Ratio<T> Ratio<T>::operator*(const Ratio &ratio){
     Ratio res;
@@ -124,6 +128,7 @@ Ratio<T> Ratio<T>::operator*(const Ratio &ratio){
     return res;
 }
 
+//Surchage de l'opérateur /
 template<typename T>
 Ratio<T> Ratio<T>::operator/( Ratio &ratio){
     Ratio res;
@@ -133,6 +138,7 @@ Ratio<T> Ratio<T>::operator/( Ratio &ratio){
     return res;
 }
 
+//surchage du moins unaire
 template<typename T>
 Ratio<T> Ratio<T>::operator-()const{
     Ratio<T> res;
@@ -141,6 +147,7 @@ Ratio<T> Ratio<T>::operator-()const{
     return res;
 }
 
+//Absolu
 template<typename T>
 Ratio<T> Ratio<T>::absolute(){
     Ratio<T> res;
@@ -154,11 +161,14 @@ Ratio<T> Ratio<T>::absolute(){
     return res;
 }
 
+//Partie entière
 template<typename T>
 T Ratio<T>::floor() const{
     return std::floor((double)num/denom);
 }
 
+//Opérateurs de comparaisons
+//Comparaison ==
 template<typename T>
 bool Ratio<T>::operator==(Ratio &ratio){
     ratio.irreducible();
@@ -169,6 +179,7 @@ bool Ratio<T>::operator==(Ratio &ratio){
     return false;
 }
 
+//Comparaison !=
 template<typename T>
 bool Ratio<T>::operator!=(Ratio &ratio){
     ratio.irreducible();
@@ -179,6 +190,7 @@ bool Ratio<T>::operator!=(Ratio &ratio){
     return false;
 }
 
+//Comparaison >
 template<typename T>
 bool Ratio<T>::operator>(Ratio &ratio){
     this->commonDenom(&ratio);
@@ -189,6 +201,7 @@ bool Ratio<T>::operator>(Ratio &ratio){
     return false;
 }
 
+//Comparaison <
 template<typename T>
 bool Ratio<T>::operator<(Ratio &ratio){
     this->commonDenom(&ratio);
@@ -199,6 +212,7 @@ bool Ratio<T>::operator<(Ratio &ratio){
     return false;
 }
 
+//Comparaison <=
 template<typename T>
 bool Ratio<T>::operator<=(Ratio &ratio){
     this->commonDenom(&ratio);
@@ -209,6 +223,7 @@ bool Ratio<T>::operator<=(Ratio &ratio){
     return false;   
 }
 
+//Comparaison >=
 template<typename T>
 bool Ratio<T>::operator>= (Ratio &ratio){
     this->commonDenom(&ratio);
@@ -219,48 +234,35 @@ bool Ratio<T>::operator>= (Ratio &ratio){
     return false;
 }
 
+//Inverse du ratio
 template<typename T>
 Ratio<T> Ratio<T>::invert(){
     Ratio res(denom, num);
     return res;
 }
 
+//Surcharge * : float * ratio
 template<typename T>
-float operator*(const float &x, Ratio<T> ratio){//float * ratio
+float operator*(const float &x, Ratio<T> ratio){
     float res = x * ratio.getNum() / ratio.getDenom();
     return res;    
 }
 
+//Surcharge * : ratio * float
+template<typename T>
+Ratio<T> operator*(Ratio<T> ratio, const float &x){
+    Ratio<T> xRatio = convert_float_to_ratio<int>(x, 5);
+    return ratio * xRatio;    
+}
+
+//Surchage <<
 template<typename T>
 std::ostream& operator<< (std::ostream& stream, const Ratio<T> &ratio){
         std::cout<< ratio.getNum() << "/" << ratio.getDenom();
         return std::cout<<std::endl;
 }
 
-
-/*
-------------Pseudo code--------------
-Function convert_float_to_ratio
-Input: x ∈ R+ : un nombre réel à convertir en rationnel
-nb_iter ∈ N : le nombre d’appels r ́ecursifs restant
-
- // première condition d’arrêt
- if x == 0 then return 0/1
-
- // seconde condition d’arrêt
- if nb iter == 0 then return 0/1
-
- // appel récursif si x < 1
- if x < 1 then
- return (convert_float_to_ratio(1/x, nb_iter))^-1
-
- // appel récursif si x > 1
- if x > 1 then
-    q = [x] // partie entière
-    return (q/1 + convert_float_to_ratio(x − q, nb iter − 1))
-
-*/
-
+//Fonction convert_float_to_ratio
 template<typename T>
 Ratio<T> convert_float_to_ratio(const float x, const uint nb_iter){
 
@@ -289,10 +291,6 @@ Ratio<T> convert_float_to_ratio(const float x, const uint nb_iter){
     return 0/1;
 }
 
-template<typename T>
-Ratio<T> operator*(Ratio<T> ratio, const float &x){//float * ratio
-    Ratio<T> xRatio = convert_float_to_ratio<int>(x, 5);
-    return ratio * xRatio;    
-}
+
 
 #endif

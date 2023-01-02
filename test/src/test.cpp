@@ -2,6 +2,7 @@
 #include <iostream>
 
 int main(){
+    //Instanciation des ratios utilisés pour les tests
     Ratio<int> r1(4, 5);
     Ratio<int> r2(9,2);
     Ratio<int> r3(-9,2);
@@ -81,6 +82,7 @@ int main(){
     }
 
     std::cout << std::endl;
+    
     float aFloat1 = 0.8;
     Ratio<int> aRatio1 = convert_float_to_ratio<int>(aFloat1, 3);
     std::cout << "convert float : " << aFloat1 << " to ratio : " << aRatio1 << std::endl;
