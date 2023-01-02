@@ -248,13 +248,6 @@ float operator*(const float &x, Ratio<T> ratio){
     return res;    
 }
 
-//Surcharge * : ratio * float
-template<typename T>
-Ratio<T> operator*(Ratio<T> ratio, const float &x){
-    Ratio<T> xRatio = convert_float_to_ratio<int>(x, 5);
-    return ratio * xRatio;    
-}
-
 //Surchage <<
 template<typename T>
 std::ostream& operator<< (std::ostream& stream, const Ratio<T> &ratio){
@@ -291,6 +284,12 @@ Ratio<T> convert_float_to_ratio(const float x, const uint nb_iter){
     return 0/1;
 }
 
+//Surcharge * : ratio * float
+template<typename T>
+Ratio<T> operator*(Ratio<T> ratio, const float &x){
+    Ratio<T> xRatio = convert_float_to_ratio<int>(x, 5);
+    return ratio * xRatio;    
+}
 
 
 #endif
