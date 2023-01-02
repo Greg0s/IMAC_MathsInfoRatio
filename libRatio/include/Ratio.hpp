@@ -7,24 +7,68 @@
 #include <numeric> //for gcd
 #include <cmath> //for floor
 
+// Doxygen menu
+/// \version 0.1
+/// \mainpage
+/// \tableofcontents
+/// \section introduction_sec What for?
+/// Library to use rationnals instead of floats.
+/// \section install_bigsec How to install
+/// \subsection dependencies_sec Dependecies
+/// \li Cmake (>=3.13)
+/// \li Doxygen (if you want the documentation)
+/// \subsection install_sec Install with cmake (Linux / Mac)
+/// \li go to main dir
+/// \li mkdir build
+/// \li cd build
+/// \li cmake ..
+/// \li make
+/// \li ./bin/testRatio
+/// \subsection doc_sec Create and read doc (Doxygen)
+/// \li if Doxygen installed: make html
+/// \li make html
+/// \li The documentation is located in : 
+/// /build/libRatio/doc/doc-doxygen/html/index.html
+
+
+/// \class Ratio
+/// \brief Class that define rationnal with linear operations
 template<class T>
 class Ratio{
     private:
-        T num;
-        T denom;
+        T num; //numerator
+        T denom; //denominator
     public:
+        /// \brief Constructor, can be set at use or, by default, is 0/1. Rationnal is changed to be irreducible.
+        /// \param n : numerator
+        /// \param d : denominator
+        /// @return Ratio
         Ratio(T n = 0, T d = 1): num(n), denom(d){this->irreducible();};
+        /// \brief Destructor, default
         ~Ratio() = default;
     
+        /// \brief Display rationnal as n/d
         void display() const;
         
+        /// \brief Get numerator
+        /// @return numerator
         inline T getNum() const { return num; };
+        /// \brief Get denominator
+        /// @return denominator
         inline T getDenom() const { return denom; };
 
+        /// \brief Set numerator
+        /// \param n : numerator
         inline void setNum(T n){ num = n; };
+        /// \brief Set denominator
+        /// \param d : denominator
         inline void setDenom(T d){ denom = d; };
 
+        /// \brief Affectation operator as ratio1 = ratio2
+        /// \param ratio : rationnel
         Ratio operator=(Ratio &ratio) const;
+        /// \brief Affectation operator as ratio1 = ratio2
+        /// \param ratio : rationnel
         Ratio operator+(const Ratio &ratio) const; 
         Ratio operator-(const Ratio &ratio) const; 
         Ratio operator*(const Ratio &ratio); 
