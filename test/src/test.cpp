@@ -8,7 +8,8 @@ int main(){
     Ratio<int> r4(10,10);
     Ratio<int> r5(8, 10);
     
-    r1.display();
+    std::cout << "Test display : ";
+    r4.display();
 
     std::cout << "Test addition" << std::endl;
     std::cout << r1 + r2 << std::endl;

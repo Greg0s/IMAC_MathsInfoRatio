@@ -14,7 +14,7 @@ class Ratio{
         T num;
         T denom;
     public:
-        Ratio(T n = 0., T d = 1.): num(n), denom(d){};
+        Ratio(T n = 0., T d = 1.): num(n), denom(d){this->irreducible();};
         ~Ratio() = default;
     
         void display() const;
