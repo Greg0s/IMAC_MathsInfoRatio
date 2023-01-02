@@ -3,7 +3,13 @@ cmake_minimum_required(VERSION 3.13)
 # give a name to the project
 project(IMAC_LibRatio)
 
-
+# call the CMakeLists.txt to make the documentation (Doxygen)
+find_package(Doxygen OPTIONAL_COMPONENTS QUIET)
+if(DOXYGEN_FOUND)
+	add_subdirectory(doc)
+else()
+	message(WARNING "Doxygen not found, skip documentation")
+endif()
 
 # Instructions to compile a library (no main() inside)
 # default STATIC ??
