@@ -12,7 +12,6 @@ else()
 endif()
 
 # Instructions to compile a library (no main() inside)
-# default STATIC ??
 # SHARED to make a .so instead of a .a
 # add_library(ganQ SHARED ${source_files} ${header_files})
 add_library(IMAC_LibRatio src/Ratio.cpp)
