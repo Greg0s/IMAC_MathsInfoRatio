@@ -40,13 +40,11 @@ class Ratio{
         bool operator<=(Ratio &ratio);
 
         void irreducible();
-        Ratio<T> toRatio() const;
+        Ratio toRatio() const;
         Ratio absolute();
         T floor() const;
         void commonDenom(Ratio * ratio);
         Ratio invert();
-
-        Ratio convert_float_to_ratio(float x, uint nb_iter);
 
 };
 
@@ -267,7 +265,7 @@ nb_iter ∈ N : le nombre d’appels r ́ecursifs restant
 */
 
 template<typename T>
-Ratio<T> convert_float_to_ratio(float x, uint nb_iter){
+Ratio<T> convert_float_to_ratio(const float x, const uint nb_iter){
 
     if(x == 0 || nb_iter == 0){
         return 0/1;
