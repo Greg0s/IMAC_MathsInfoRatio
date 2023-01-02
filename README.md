@@ -10,6 +10,10 @@
 
 > cmake --build .
 
+<h3><b>Run test</b></h3>
+
+> ./bin/testRatio
+
 <h3><b>Generate documentation</b></h3>
 
 > make html
@@ -17,7 +21,3 @@
 <h3><b>Documentation</b></h3>
 
 > /build/libRatio/doc/doc-doxygen/html/index.html
-
-<h3><b>Run test</b></h3>
-
-> ./bin/testRatio
