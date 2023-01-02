@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/testRatio.dir/src/test.cpp.o CMakeFiles/testRatio.dir/__/libRatio/src/Ratio.cpp.o -o ../bin/testRatio 
