@@ -40,6 +40,7 @@ class Ratio{
         bool operator<=(Ratio &ratio);
 
         void irreducible();
+        Ratio<T> toRatio() const;
         Ratio absolute();
         T floor() const;
         void commonDenom(Ratio * ratio);
@@ -65,6 +66,18 @@ void Ratio<T>::irreducible(){
         num = num/gcd;
     }
 }
+
+// template<typename T>
+// Ratio<T> Ratio<T>::toRatio() const{
+//     Ratio<T> res = *this;
+
+//     while(num / std::floor(num) != 1 && denom / std::floor(denom) != 1){
+//         res.num *= 10;
+//         res.denom *= 10;
+//     }
+//     res.irreducible();
+//     return res;
+// }
 
 template<typename T>
 void Ratio<T>::commonDenom(Ratio * ratio)
@@ -256,33 +269,35 @@ nb_iter ∈ N : le nombre d’appels r ́ecursifs restant
 template<typename T>
 Ratio<T> convert_float_to_ratio(float x, uint nb_iter){
 
-    if(x == 0){
-        return 0/1;
-    }
-    if(nb_iter == 0){
+    if(x == 0 || nb_iter == 0){
         return 0/1;
     }
 
-    if(x < 1){
+    if(x==1){
+        return 1/1;
+    }
+
+    if(x < 1 && x > 0){
         Ratio<T> res = convert_float_to_ratio<T>(1/x, nb_iter);
         return res.invert();
     }
 
     if(x > 1){
         int q=floor(x); //partie entière
-        std::cout << "x : " << x << " et q : " << q << std::endl;
+        //std::cout << "x : " << x << " et q : " << q << std::endl;
         Ratio<T> qRatio(q, 1);
         Ratio<T> res = convert_float_to_ratio<T>(x-q, nb_iter-1);
-        std::cout << "qRatio : " << qRatio << " et res : " << res << std::endl;
-        //return 1;
+        //std::cout << "qRatio : " << qRatio << " et res : " << res << std::endl;
         return qRatio + res; 
     }
 
-    if(x < 0){//Cas négatif ne marche pas, seg fault, surement pas ce que j'ai mis du tt
-        return -convert_float_to_ratio<T>(-x, nb_iter-1);
+    if(x < 0){//Cas négatif
+        int q = floor(x);
+        Ratio<T> qRatio(q, 1);
+        // return 1;
+        return qRatio + convert_float_to_ratio<T>(x-q, nb_iter-1);
     }
-    
-    return 0/1;
+
 
 }
 
