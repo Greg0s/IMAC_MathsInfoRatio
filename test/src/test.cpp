@@ -150,7 +150,7 @@ int main(){
 
     std::cout << std::endl << "Test ratio grand nombre" << std::endl;
     std::cout << convert_float_to_ratio<double>(64465.5456456,10);
-      std::cout << std::endl << "Test ratio petit nombre" << std::endl;
+    std::cout << std::endl << "Test ratio petit nombre" << std::endl;
     std::cout << convert_float_to_ratio<double>(0.5456456,10);
     
     return 0;
