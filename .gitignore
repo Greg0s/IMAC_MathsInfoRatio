@@ -1,3 +1,4 @@
 build/
 .vscode/
 libRatio/doc/Doxyfile-html
+.DS_Store
