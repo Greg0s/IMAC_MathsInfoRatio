@@ -39,7 +39,7 @@ class Ratio{
         T num; //numerator
         T denom; //denominator
     public:
-        /// \brief Constructor, can be set at use or, by default, is 0/1. Rationnal is changed to be irreducible.
+        /// \brief Constructor, can be set at use or, by default, is 0/1. Rationnal is automatically set in its irreducible form.
         /// \param n : numerator
         /// \param d : denominator
         /// @return Ratio
@@ -51,9 +51,11 @@ class Ratio{
         void display() const;
         
         /// \brief Get numerator
+        /// \tparam : int, long int
         /// @return numerator
         inline T getNum() const { return num; };
         /// \brief Get denominator
+        /// \tparam : int, long int
         /// @return denominator
         inline T getDenom() const { return denom; };
 
@@ -64,30 +66,74 @@ class Ratio{
         /// \param d : denominator
         inline void setDenom(T d){ denom = d; };
 
-        /// \brief Affectation operator as ratio1 = ratio2
-        /// \param ratio : rationnel
+        /// \brief Affectation operator as thisRatio = ratio
+        /// \param ratio : rationnal
+        /// @return affected rationnal
         Ratio operator=(Ratio &ratio) const;
-        /// \brief Affectation operator as ratio1 = ratio2
-        /// \param ratio : rationnel
+        /// \brief Addition operator as thisRatio + ratio
+        /// \param ratio : rationnal
+        /// @return sum
         Ratio operator+(const Ratio &ratio) const; 
+        /// \brief Soustraction operator as thisRatio - ratio
+        /// \param ratio : rationnal
+        /// @return difference
         Ratio operator-(const Ratio &ratio) const; 
+        /// \brief Multiplication operator as thisRatio * ratio
+        /// \param ratio : rationnal
+        /// @return result
         Ratio operator*(const Ratio &ratio); 
+        /// \brief Division operator as thisRatio / ratio
+        /// \param ratio : rationnal
+        /// @return result
         Ratio operator/(Ratio &ratio) const; 
+        /// \brief Unary operation as (-) thisRatio
+        /// @return (-) thisRatio
         Ratio operator-() const;
 
+        /// \brief Equality comparator as thisRatio == ratio
+        /// \param ratio : rationnal to compare
+        /// @return result (true or false)
         bool operator==(Ratio &ratio);
+        /// \brief Non-equality comparator as thisRatio != ratio
+        /// \param ratio : rationnal to compare
+        /// @return result (true or false)
         bool operator!=(Ratio &ratio);
+        /// \brief Superior comparator as thisRatio > ratio
+        /// \param ratio : rationnal to compare
+        /// @return result (true or false)
         bool operator>(Ratio &ratio);
+        /// \brief Inferior comparator as thisRatio < ratio
+        /// \param ratio : rationnal to compare
+        /// @return result (true or false)
         bool operator<(Ratio &ratio);
+        /// \brief Superior or equal comparator as thisRatio >= ratio
+        /// \param ratio : rationnal to compare
+        /// @return result (true or false)
         bool operator>=(Ratio &ratio);
+        /// \brief Inferior or equal comparator as thisRatio <= ratio
+        /// \param ratio : rationnal to compare
+        /// @return result (true or false)
         bool operator<=(Ratio &ratio);
 
-        Ratio operator*(float &x);//ratio * float
+        /// \brief Multiplication operator as thisRatio * float
+        /// \param x : float
+        /// @return result
+        Ratio operator*(const float &x);//ratio * float
 
+        /// \brief Make a rationnal irreducible
+        /// @return irreducible form of thisRatio
         void irreducible();
+        /// \brief Absolute value of a rationnal
+        /// @return absolute value of thisRatio
         Ratio absolute() const;
+        /// \brief Floor of a rationnal
+        /// @return floor of thisRatio
         T floor() const;
+        /// \brief Set thisRatio and ratio at the same denominator
+        /// \param x : rationnal
         void commonDenom(Ratio * ratio);
+        /// \brief Invert a rationnal
+        /// @return thisRatio inverted
         Ratio invert();
 
 };
@@ -277,6 +323,10 @@ Ratio<T> Ratio<T>::invert(){
 }
 
 //Surcharge * : float * ratio
+/// \brief Multiplication operator as float * ratio
+/// \param x : float to multiply
+/// \param ratio : rationnal to multiply
+/// @return result as a float
 template<typename T>
 float operator*(const float &x, Ratio<T> ratio){
     float res = x * ratio.getNum() / ratio.getDenom();
@@ -284,15 +334,23 @@ float operator*(const float &x, Ratio<T> ratio){
 }
 
 //Surchage <<
+/// \brief Display a rationnal as n/d using std operators "<<""
+/// \param stream : stream displayed
+/// \param ratio : rationnal to display
+/// @return ostream
 template<typename T>
-std::ostream& operator<< (std::ostream& stream, const Ratio<T> &ratio){
+std::ostream& operator<<(std::ostream& stream, const Ratio<T> &ratio){
         std::cout<< ratio.getNum() << "/" << ratio.getDenom();
         return std::cout<<std::endl;
 }
 
 //Fonction convert_float_to_ratio
+/// \brief Convert a float to a ratio according to a given precision.
+/// \param x : float to convert
+/// \param nb_iter : number of iteration, define the precision of the conversion
+/// @return the newly created rationnal from the float
 template<typename T>
-Ratio<T> convert_float_to_ratio(const T x, const uint nb_iter){
+Ratio<T> convert_float_to_ratio(const float x, const uint nb_iter){
 
     if(x == 0 || nb_iter == 0){
         return 0/1;
@@ -319,7 +377,8 @@ Ratio<T> convert_float_to_ratio(const T x, const uint nb_iter){
 
 //Surcharge * : ratio * float
 template<typename T>
-Ratio<T> operator*(Ratio<T> ratio, const float &x){
+Ratio<T> Ratio<T>::operator*(const float &x){
+    Ratio<T> ratio(num, denom);
     Ratio<T> xRatio = convert_float_to_ratio<int>(x, 5);
     return ratio * xRatio;    
 }

@@ -73,7 +73,7 @@ int main(){
     std::cout <<" ----------- "<< std::endl;
 
     std::cout << "Test multiplication float * ratio" << std::endl;
-    if((2.45 * r1) == 1.96){
+    if((2.45 * r1) == (float) 1.96){
         std::cout << "c'est ok" << std::endl;
         std::cout << 2.45 * r1 << std::endl << std::endl;
     }
